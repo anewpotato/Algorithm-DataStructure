@@ -4,7 +4,9 @@ class Node {
     this.children = []; // 일반 트리는 여러 개의 자식을 가질 수 있다.
   }
 }
-
+/**
+ * 시간 복잡도는 모두 O(N).
+ */
 class Tree {
   constructor() {
     this.root = null;
