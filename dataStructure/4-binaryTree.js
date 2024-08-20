@@ -6,12 +6,12 @@ class Node {
   }
 }
 
-/* 평균적으로 O(log N), 최악은 O(N) */
 class BinaryTree {
   constructor() {
     this.root = null;
   }
 
+  /* 평균적으로 O(log N), 최악은 O(h) or O(n) */
   insert(value) {
     const newNode = new Node(value);
     if (this.root === null) this.root = newNode;
@@ -28,6 +28,7 @@ class BinaryTree {
     }
   }
 
+  /* 평균적으로 O(log N), 최악은 O(h) */
   delete(value, node = this.root) {
     if (node === null) return null;
 
@@ -63,6 +64,7 @@ class BinaryTree {
     return node;
   }
 
+  /* 평균적으로 O(log N), 최악은 O(h) or O(n) */
   search(value, node = this.root) {
     if (node === null) return null;
 
@@ -70,7 +72,7 @@ class BinaryTree {
     else if (value > node.value) return this.search(value, node.right);
     else return node;
   }
-  // 전위 순회
+  // 전위 순회 O(n)
   preOrder(node = this.root) {
     if (node !== null) {
       console.log(node.value);
@@ -79,7 +81,7 @@ class BinaryTree {
     }
   }
 
-  // 중위 순회
+  // 중위 순회 O(n)
   inOrder(node = this.root) {
     if (node !== null) {
       this.inOrder(node.left);
@@ -88,7 +90,7 @@ class BinaryTree {
     }
   }
 
-  // 후위 순회
+  // 후위 순회 O(n)
   postOrder(node = this.root) {
     if (node !== null) {
       this.postOrder(node.left);
