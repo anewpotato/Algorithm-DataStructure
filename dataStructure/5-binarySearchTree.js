@@ -6,7 +6,7 @@ class Node {
   }
 }
 
-class BinaryTree {
+class BinarySearchTree {
   constructor() {
     this.root = null;
   }
