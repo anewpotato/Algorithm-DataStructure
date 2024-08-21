@@ -37,7 +37,7 @@ class BinarySearchTree {
     } else if (value > node.value) {
       node.right = this.delete(value, node.right);
     } else {
-      // case 1: leaft node
+      // case 1: leaf node
       if (node.left === null && node.right === null) return null;
 
       // case 2: 자식이 1개인 경우,
@@ -101,7 +101,7 @@ class BinarySearchTree {
 }
 
 // 트리 생성
-const tree = new BinaryTree();
+const tree = new BinarySearchTree();
 
 // 노드 삽입
 tree.insert(10);
