@@ -87,3 +87,16 @@ class MaxHeap {
     return this.heap[0];
   }
 }
+
+// 최대 힙 사용 예시
+const maxHeap = new MaxHeap();
+maxHeap.insert(10);
+maxHeap.insert(5);
+maxHeap.insert(3);
+maxHeap.insert(2);
+maxHeap.insert(7);
+
+console.log(maxHeap.peek()); // 10 (최대값)
+console.log(maxHeap.removeMax()); // 10 (최대값 제거)
+console.log(maxHeap.removeMax()); // 7 (다음 최대값 제거)
+console.log(maxHeap.peek()); // 5 (새로운 최대값)
