@@ -1,4 +1,5 @@
 class Graph {
+  // 인접 리스트
   constructor() {
     this.adjList = new Map();
   }
@@ -15,6 +16,8 @@ class Graph {
     if (this.adjList.has(vertex)) {
       for (let neighbor of this.adjList.get(vertex)) {
         this.removeEdge(vertex, neighbor); // 연결된 모든 간선 제거
+        // 가중치 그래프일 경우,
+        // this.removeEdge(vertex, neighbor.node);
       }
       this.adjList.delete(vertex);
     }
@@ -32,6 +35,9 @@ class Graph {
 
     this.adjList.get(v1).push(v2);
     this.adjList.get(v2).push(v1); // 무방향 그래프인 경우,
+    // 가중치 그래프일 경우,
+    // this.adjList.get(v1).push({ node: v2, weight: weight });
+    // this.adjList.get(v2).push({ node: v1, weight: weight });
   }
 
   // 간선 삭제 메소드, O(E)
@@ -40,12 +46,16 @@ class Graph {
       this.adjList.set(
         v1,
         this.adjList.get(v1).filter((vertex) => vertex !== v2)
+        // 가중치 그래프일 경우,
+        // this.adjList.get(v1).filter((edge) => edge.node !== v2)
       );
     }
     if (this.adjList.has(v2)) {
       this.adjList.set(
         v2,
         this.adjList.get(v2).filter((vertex) => vertex !== v1)
+        // 가중치 그래프일 경우,
+        // this.adjList.get(v2).filter((edge) => edge.node !== v1)
       );
     }
   }

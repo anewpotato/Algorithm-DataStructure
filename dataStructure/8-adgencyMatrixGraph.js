@@ -1,7 +1,12 @@
 class Graph {
+  // 인접 행렬
   constructor(size) {
     this.size = size; // 그래프의 정점 수
-    this.adjMatrix = Array.from({ length: size }, () => Array(size).fill(0)); // 인접 행렬 초기화
+    this.adjMatrix = Array.from({ length: size }, () => Array(size).fill(0)); // 인접 행렬 초기화 (가중치 그래프 null 초기화)
+    // 가중치 그래프의 경우, 자기 자신은 0으로 초기화,
+    // for (let i = 0; i < size; i++) {
+    //   this.adjMatrix[i][i] = 0;
+    // }
   }
 
   // 간선 추가 메서드, O(1)
@@ -9,6 +14,9 @@ class Graph {
     if (this._isValidVertex(v1) && this._isValidVertex(v2)) {
       this.adjMatrix[v1][v2] = 1;
       this.adjMatrix[v2][v1] = 1; // 무방향 그래프일 경우
+      // 가중치 그래프일 경우,
+      // this.adjMatrix[v1][v2] = weight;
+      // this.adjMatrix[v2][v1] = weight;
     }
   }
 
@@ -17,6 +25,9 @@ class Graph {
     if (this._isValidVertex(v1) && this._isValidVertex(v2)) {
       this.adjMatrix[v1][v2] = 0;
       this.adjMatrix[v2][v1] = 0; // 무방향 그래프일 경우
+      // 가중치 그래프일 경우,
+      // this.adjMatrix[v1][v2] = null;
+      // this.adjMatrix[v2][v1] = null;
     }
   }
 
